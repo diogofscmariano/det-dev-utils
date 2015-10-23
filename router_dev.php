@@ -41,7 +41,8 @@ if (preg_match($pattern, $_SERVER["REQUEST_URI"], $matches)) {
     }
 }
 
-if($content = @file_get_contents('http://localhost:9050' . $_SERVER["REQUEST_URI"])) {
+$content = @file_get_contents('http://localhost:9050' . $_SERVER["REQUEST_URI"]);
+if($content !== false) {
     foreach ($http_response_header as $value) {
         if (preg_match('/^Content-Type:/i', $value)) {
             // Successful match
