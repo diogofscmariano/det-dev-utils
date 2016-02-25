@@ -20,6 +20,10 @@ if (preg_match($pattern, $_SERVER["REQUEST_URI"], $matches)) {
             $file = substr($file, 0, $i);
         }
 
+        if($file === 'index.html') {
+            $webroot = $webroot . '../../../../target/classes/web/';
+        }
+
         if(file_exists('./' . $webroot . $file)) {
             $mime = '';
             if(substr_compare($file, '.js', strlen($file)-3, 3) === 0) {
