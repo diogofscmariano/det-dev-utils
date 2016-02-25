@@ -1,10 +1,10 @@
 <?php
 $webroots = [
-                'DataExplorerModule' => 'data-explorer-module/src/main/resources/web/',
-                'DataExplorerTool' => 'pentaho-det-core/src/main/resources/web/'
+                'pentaho-det-core' => 'Implementation/Core/src/main/resources/web/',
+                'pentaho-det-data-explorer-module' => 'Implementation/data-explorer-module/src/main/resources/web/'
             ];
 
-$pattern = '/^\/([^\/]+)\/web\/(.*)$/';
+$pattern = '/^\/([^\/]+)\/6\.1\-SNAPSHOT\/(.*)$/';
 $matches = null;
 
 if (strpos($_SERVER["REQUEST_URI"], '/webjars/') === 0) {
