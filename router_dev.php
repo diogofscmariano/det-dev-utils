@@ -3,16 +3,23 @@
 $tool_root = dirname(__FILE__);
 
 $webroots = [
-                'pentaho-det-core' => 'Implementation/Core/src/main/resources/web/',
-                'pentaho-det-data-explorer-module' => 'Implementation/data-explorer-module/src/main/resources/web/'
+                'common-ui' => '/Users/nantunes/dev/pentaho/pentaho-viz/pentaho-viz-api/package-res/',
+                'pentaho-det-core' => getcwd().'/Implementation/Core/src/main/resources/web/',
+                'pentaho-det-data-explorer-module' => getcwd().'/Implementation/data-explorer-module/src/main/resources/web/'
             ];
 
 $pattern = '/^\/([^\/]+)\/6\.1\-SNAPSHOT\/(.*)$/';
 $matches = null;
 
-if (strpos($_SERVER["REQUEST_URI"], '/webjars/') === 0) {
-    error_log($_SERVER["REQUEST_URI"] . ' 302 (http://cdn.jsdelivr.net/webjars/org.webjars' . $_SERVER["REQUEST_URI"] . ')');
-    header('Location: http://cdn.jsdelivr.net/webjars/org.webjars' . $_SERVER["REQUEST_URI"]);
+if ($_SERVER["REQUEST_URI"] === '/requirejs-manager/js/require-init.js') {
+    header('Content-Type: text/javascript');
+    $content = @file_get_contents('http://localhost:9050' . $_SERVER["REQUEST_URI"]);
+
+    $i = strpos($content, "/* Following configurations are");
+
+    echo substr($content, 0, $i) . "\n";
+    readfile($webroots['common-ui'] . 'resources/web/common-ui-require-js-cfg.js');
+    echo "\nrequireCfg.baseUrl = '/';\nrequire.config(requireCfg);\n";
     exit;
 }
 
@@ -20,35 +27,41 @@ if (preg_match($pattern, $_SERVER["REQUEST_URI"], $matches)) {
     if(!empty($webroots[$matches[1]])) {
         $webroot = $webroots[$matches[1]];
         $file = $matches[2];
-        if(($i = strpos($file, '?')) !== false) {
-            $file = substr($file, 0, $i);
-        }
-
-        if($file === 'index.html') {
-            $webroot = $webroot . '../../../../target/classes/web/';
-        }
-
-        if(file_exists('./' . $webroot . $file)) {
-            $mime = '';
-            if(substr_compare($file, '.js', strlen($file)-3, 3) === 0) {
-                $finfo = finfo_open(FILEINFO_MIME_ENCODING);
-                $mime = 'application/javascript; ';
-            } else if(substr_compare($file, '.css', strlen($file)-4, 4) === 0) {
-                $finfo = finfo_open(FILEINFO_MIME_ENCODING);
-                $mime = 'text/css; ';
-            } else {
-                $finfo = finfo_open(FILEINFO_MIME);
-            }
-
-            header("Content-type: " . $mime . finfo_file($finfo, './' . $webroot . $file));
-            finfo_close($finfo);
-
-            readfile('./' . $webroot . $file);
-            exit;
-        }
-
-        error_log($_SERVER["REQUEST_URI"] . ' 404 (' . $webroot . $file . ')');
     }
+} else if(strpos($_SERVER["REQUEST_URI"], '/content/common-ui/') === 0) {
+    $webroot = $webroots['common-ui'];
+    $file = substr($_SERVER["REQUEST_URI"], 19);
+}
+
+if(!empty($webroot)) {
+    if(($i = strpos($file, '?')) !== false) {
+        $file = substr($file, 0, $i);
+    }
+
+    if($file === 'index.html') {
+        $webroot = $webroot . '../../../../target/classes/web/';
+    }
+
+    if(file_exists($webroot . $file)) {
+        $mime = '';
+        if(substr_compare($file, '.js', strlen($file)-3, 3) === 0) {
+            $finfo = finfo_open(FILEINFO_MIME_ENCODING);
+            $mime = 'application/javascript; ';
+        } else if(substr_compare($file, '.css', strlen($file)-4, 4) === 0) {
+            $finfo = finfo_open(FILEINFO_MIME_ENCODING);
+            $mime = 'text/css; ';
+        } else {
+            $finfo = finfo_open(FILEINFO_MIME);
+        }
+
+        header("Content-type: " . $mime . finfo_file($finfo, $webroot . $file));
+        finfo_close($finfo);
+
+        readfile($webroot . $file);
+        exit;
+    }
+
+    error_log($_SERVER["REQUEST_URI"] . ' 404 (' . $webroot . $file . ')');
 } else if (strpos($_SERVER["REQUEST_URI"], '/cxf/DataExplorerTool/det/dataSources') === 0) {
     header('Content-Type: application/json');
 
