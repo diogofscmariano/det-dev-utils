@@ -8,7 +8,7 @@ $webroots = [
                 'pentaho-det-data-explorer-module' => getcwd().'/Implementation/data-explorer-module/src/main/resources/web/'
             ];
 
-$pattern = '/^\/([^\/]+)\/6\.1\-SNAPSHOT\/(.*)$/';
+$pattern = '/^\/([^\/]+)\/7\.0\-SNAPSHOT\/(.*)$/';
 $matches = null;
 
 if ($_SERVER["REQUEST_URI"] === '/requirejs-manager/js/require-init.js') {
