@@ -1,4 +1,8 @@
 <?php
+if ($_SERVER["REQUEST_URI"] === '/') {
+    header('Location: /pentaho-det-core/7.0-SNAPSHOT/index.html');
+    return;
+}
 
 $tool_root = dirname(__FILE__);
 
