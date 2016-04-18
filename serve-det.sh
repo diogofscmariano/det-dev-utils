@@ -6,4 +6,14 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
+for opt in "$@"
+do
+  case $opt in
+    "-c" | "--configure")
+      php $DIR/router_dev.php $*
+      exit
+      ;;
+  esac
+done
+
 php -S localhost:9000 -t . $DIR/router_dev.php
