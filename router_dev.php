@@ -14,7 +14,9 @@ if ($_SERVER["REQUEST_URI"] === '/') {
 
 $webroots = [
   'pentaho-det-core' => $options["det"].'/Implementation/Core/src/main/resources/web/',
-  'pentaho-det-data-explorer-module' => $options["det"].'/Implementation/data-explorer-module/src/main/resources/web/'
+  'pentaho-det-data-explorer-module' => $options["det"].'/Implementation/data-explorer-module/src/main/resources/web/',
+
+  'pentaho-det-demo-listchanges' => $options["det"].'/Demo/ListChanges/src/main/resources/web/'
 ];
 
 $common_ui = false;
