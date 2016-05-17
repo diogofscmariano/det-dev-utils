@@ -2,44 +2,44 @@
   "cols": [
     {
       "type": "NUMBER",
-      "id": null,
-      "label": "id",
+      "id": "id",
+      "label": null,
       "pattern": null
     },
     {
       "type": "STRING",
-      "id": null,
-      "label": "first_name",
+      "id": "first_name",
+      "label": null,
       "pattern": null
     },
     {
       "type": "NUMBER",
-      "id": null,
-      "label": "price",
+      "id": "price",
+      "label": null,
       "pattern": null
     },
     {
       "type": "NUMBER",
-      "id": null,
-      "label": "size",
+      "id": "size",
+      "label": null,
       "pattern": null
     },
     {
       "type": "STRING",
-      "id": null,
-      "label": "country",
+      "id": "country",
+      "label": null,
       "pattern": null
     },
     {
       "type": "NUMBER",
-      "id": null,
-      "label": "ip_address",
+      "id": "ip_address",
+      "label": null,
       "pattern": null
     },
     {
       "type": "STRING",
-      "id": null,
-      "label": "gender",
+      "id": "gender",
+      "label": null,
       "pattern": null
     }
   ],

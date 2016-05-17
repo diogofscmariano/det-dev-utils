@@ -2,74 +2,74 @@
   "cols": [
     {
       "type": "NUMBER",
-      "id": null,
-      "label": "QUANTITYORDERED",
+      "id": "QUANTITYORDERED",
+      "label": null,
       "pattern": null
     },
     {
       "type": "NUMBER",
-      "id": null,
-      "label": "PRICEEACH",
+      "id": "PRICEEACH",
+      "label": null,
       "pattern": null
     },
     {
       "type": "NUMBER",
-      "id": null,
-      "label": "SALES",
+      "id": "SALES",
+      "label": null,
       "pattern": null
     },
     {
       "type": "STRING",
-      "id": null,
-      "label": "ORDERDATE",
+      "id": "ORDERDATE",
+      "label": null,
       "pattern": null
     },
     {
       "type": "STRING",
-      "id": null,
-      "label": "STATUS",
+      "id": "STATUS",
+      "label": null,
       "pattern": null
     },
     {
       "type": "STRING",
-      "id": null,
-      "label": "PRODUCTLINE",
+      "id": "PRODUCTLINE",
+      "label": null,
       "pattern": null
     },
     {
       "type": "STRING",
-      "id": null,
-      "label": "PRODUCTCODE",
+      "id": "PRODUCTCODE",
+      "label": null,
       "pattern": null
     },
     {
       "type": "STRING",
-      "id": null,
-      "label": "CUSTOMERNAME",
+      "id": "CUSTOMERNAME",
+      "label": null,
       "pattern": null
     },
     {
       "type": "STRING",
-      "id": null,
-      "label": "CITY",
+      "id": "CITY",
+      "label": null,
       "pattern": null
     },
     {
       "type": "STRING",
-      "id": null,
-      "label": "STATE",
+      "id": "STATE",
+      "label": null,
       "pattern": null
     },
     {
       "type": "STRING",
-      "id": null,
-      "label": "COUNTRY",
+      "id": "COUNTRY",
+      "label": null,
       "pattern": null
     },
     {
       "type": "STRING",
-      "id": null,
-      "label": "TERRITORY",
+      "id": "TERRITORY",
+      "label": null,
       "pattern": null
     }
   ],
