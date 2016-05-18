@@ -66,7 +66,7 @@ function saveConfiguration($options) {
 function loadConfiguration() {
   global $CONFIG_FILE;
 
-  return file_exists($CONFIG_FILE) ? parse_ini_file($CONFIG_FILE, false, INI_SCANNER_TYPED) : array();
+  return file_exists($CONFIG_FILE) ? parse_ini_file($CONFIG_FILE, false) : array();
 }
 
 function ensureTrailingSlash(&$value) {
